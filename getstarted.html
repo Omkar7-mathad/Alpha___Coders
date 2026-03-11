@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Career Awareness | CareerNavigator</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* GENERAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#f4f7fb;
+color:#333;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 60px;
+background:white;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+display:flex;
+align-items:center;
+font-size:22px;
+font-weight:600;
+color:#1c4e80;
+}
+
+.logo img{
+width:45px;
+margin-right:10px;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+nav a:hover{
+color:#f28c28;
+}
+
+/* HERO */
+
+.hero{
+height:520px;
+background:url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+position:relative;
+color:white;
+max-width:700px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.hero button{
+padding:15px 35px;
+font-size:18px;
+background:#f28c28;
+border:none;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.hero button:hover{
+background:#d8741c;
+}
+
+/* SECTION */
+
+section{
+padding:70px 20px;
+max-width:1100px;
+margin:auto;
+}
+
+h2{
+text-align:center;
+color:#1c4e80;
+margin-bottom:30px;
+font-size:32px;
+}
+
+.section-text{
+text-align:center;
+font-size:18px;
+line-height:1.7;
+margin-bottom:40px;
+}
+
+/* CAREER GRID */
+
+.career-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:30px;
+}
+
+.card{
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 12px 30px rgba(0,0,0,0.15);
+}
+
+.card img{
+width:100%;
+height:160px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+text-align:center;
+}
+
+.card h3{
+margin-bottom:10px;
+color:#1c4e80;
+}
+
+.card p{
+font-size:15px;
+color:#555;
+}
+
+/* TIPS */
+
+.tips{
+background:white;
+border-radius:10px;
+padding:40px;
+box-shadow:0 6px 15px rgba(0,0,0,0.08);
+}
+
+.tips ul{
+font-size:18px;
+line-height:1.8;
+padding-left:20px;
+}
+
+/* QUIZ BUTTON */
+
+.quiz-section{
+text-align:center;
+margin-top:40px;
+}
+
+.quiz-btn{
+padding:16px 40px;
+font-size:20px;
+background:#4facfe;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+.quiz-btn:hover{
+background:#3a8de0;
+}
+
+/* FOOTER */
+
+footer{
+background:#1c4e80;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:60px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="logo">
+
+<img src="logo.jpg">
+
+CareerNavigator
+
+</div>
+
+<nav>
+
+<a href="index.html">Home</a>
+<a href="quiz.html">Quiz</a>
+<a href="course.html">Courses</a>
+<a href="logout.html">logout</a>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Discover Your Perfect Career Path</h1>
+
+<p>
+Explore career opportunities, discover your strengths,
+and make informed decisions about your future.
+</p>
+
+<button onclick="window.location.href='quiz.html'">
+
+Start Career Quiz <i class="fas fa-arrow-right"></i>
+
+</button>
+
+</div>
+
+</section>
+
+<!-- WHY CAREER GUIDANCE -->
+
+<section>
+
+<h2>Why Career Guidance is Important</h2>
+
+<p class="section-text">
+
+Choosing the right career is one of the most important decisions in life.
+CareerNavigator helps students understand their interests, explore
+career opportunities, and select the best educational path.
+
+</p>
+
+</section>
+
+<!-- CAREER FIELDS -->
+
+<section>
+
+<h2>Popular Career Fields</h2>
+
+<div class="career-grid">
+
+<div class="card">
+
+<img src="eng.jpeg">
+
+<div class="card-content">
+
+<h3>Engineering</h3>
+
+<p>Software, AI, Civil, Mechanical and Robotics careers.</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="med.png">
+
+<div class="card-content">
+
+<h3>Medical</h3>
+
+<p>Doctor, Nurse, Pharmacy and Healthcare careers.</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="arts.png">
+
+<div class="card-content">
+
+<h3>Arts & Humanities</h3>
+
+<p>Design, Writing, Psychology and Creative careers.</p>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b">
+
+<div class="card-content">
+
+<h3>Commerce</h3>
+
+<p>Business, Finance, Marketing and Management careers.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TIPS -->
+
+<section>
+
+<h2>Tips to Choose the Right Career</h2>
+
+<div class="tips">
+
+<ul>
+
+<li>Identify your interests and passions.</li>
+
+<li>Assess your strengths and skills.</li>
+
+<li>Research future job opportunities.</li>
+
+<li>Understand education and training requirements.</li>
+
+<li>Seek guidance from mentors and teachers.</li>
+
+</ul>
+
+</div>
+
+</section>
+
+<!-- QUIZ -->
+
+<section class="quiz-section">
+
+<h2>Ready to Find Your Career Path?</h2>
+
+<button class="quiz-btn" onclick="window.location.href='quiz.html'">
+
+Take Career Quiz <i class="fas fa-arrow-right"></i>
+
+</button>
+
+</section>
+
+<footer>
+
+<p>© 2026 CareerNavigator Platform</p>
+
+</footer>
+
+</body>
+</html>

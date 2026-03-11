@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Career Quiz</title>
+
+<style>
+body{
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background:linear-gradient(135deg,#F1F5F9,#E2E8F0,#0F172A),#334155;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+}
+
+.quiz-box{
+  background:white;
+  width:700px;
+  padding:40px;
+  border-radius:15px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+h2{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:20px;
+  color:#333;
+}
+
+#progress{
+  text-align:right;
+  font-size:16px;
+  margin-bottom:15px;
+  color:#555;
+}
+
+#question{
+  font-size:22px;
+  font-weight:600;
+  margin-bottom:25px;
+}
+
+#options label{
+  display:block;
+  background:#f5f7fb;
+  padding:15px;
+  border-radius:8px;
+  margin:10px 0;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+  border:2px solid transparent;
+}
+
+#options label:hover{
+  background:#e8f0ff;
+  border-color:#4facfe;
+}
+
+input[type="radio"]{
+  margin-right:10px;
+  transform:scale(1.2);
+}
+
+button{
+  margin-top:25px;
+  padding:14px;
+  width:100%;
+  border:none;
+  background:#4facfe;
+  color:white;
+  font-size:18px;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#3a8de0;
+}
+
+#result{
+  margin-top:30px;
+  font-size:22px;
+  font-weight:bold;
+  text-align:center;
+  color:#333;
+}
+
+#result ul{
+  list-style-type: square;
+  margin-top:10px;
+  text-align:left;
+  padding-left:20px;
+  color:#111;
+}
+
+#result h3{
+  margin-bottom:10px;
+  color:#222;
+}
+</style>
+
+</head>
+<body>
+
+<div class="quiz-box">
+
+<h2>Discover Your Career Passion</h2>
+<div id="progress"></div>
+<div id="question"></div>
+<div id="options"></div>
+
+<button onclick="nextQuestion()">Next</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+let questions = [
+  {
+    q:"1. Which activity excites you more on a weekend?",
+    options:[
+      { text:"Building gadgets, coding, or experimenting with tech", type:"eng"},
+      { text:"Reading about human body, health, or helping someone", type:"med"}
+    ]
+  },
+  {
+    q:"2. When faced with a problem, you prefer to:",
+    options:[
+      { text:"Analyze, design a solution, or create a system", type:"eng"},
+      { text:"Understand the cause, investigate, and treat it", type:"med"}
+    ]
+  },
+  {
+    q:"3. Your favorite type of book or content is:",
+    options:[
+      { text:"Science, technology, or engineering innovations", type:"eng"},
+      { text:"Medical discoveries, biology, or health guides", type:"med"}
+    ]
+  },
+  {
+    q:"4. Which hobby describes you best?",
+    options:[
+      { text:"Playing with electronics, coding, building robots", type:"eng"},
+      { text:"Volunteering in health camps, reading about medicine", type:"med"}
+    ]
+  },
+  {
+    q:"5. You enjoy working with:",
+    options:[
+      { text:"Machines, software, or logical systems", type:"eng"},
+      { text:"People’s health, anatomy, or treatments", type:"med"}
+    ]
+  },
+  {
+    q:"6. Which class topic grabs your attention the most?",
+    options:[
+      { text:"Physics, math, robotics, programming", type:"eng"},
+      { text:"Biology, human anatomy, diseases, medicine", type:"med"}
+    ]
+  },
+  {
+    q:"7. How do you approach challenges?",
+    options:[
+      { text:"By testing, experimenting, and improving systems", type:"eng"},
+      { text:"By observing, diagnosing, and finding cures", type:"med"}
+    ]
+  },
+  {
+    q:"8. What kind of news or articles do you follow?",
+    options:[
+      { text:"Tech trends, AI, space, gadgets", type:"eng"},
+      { text:"Medical research, health breakthroughs, nutrition", type:"med"}
+    ]
+  },
+  {
+    q:"9. Your ideal internship would be in:",
+    options:[
+      { text:"A tech company, robotics lab, or software firm", type:"eng"},
+      { text:"Hospital, health research lab, or clinic", type:"med"}
+    ]
+  },
+  {
+    q:"10. What motivates you the most?",
+    options:[
+      { text:"Creating innovative tech that solves problems", type:"eng"},
+      { text:"Saving lives and improving health outcomes", type:"med"}
+    ]
+  }
+];
+
+let current = 0;
+let engScore = 0;
+let medScore = 0;
+
+function loadQuestion(){
+  let q = questions[current];
+  document.getElementById("progress").innerHTML = "Question " + (current+1) + " of " + questions.length;
+  document.getElementById("question").innerHTML = q.q;
+
+  let optionsHTML = "";
+  q.options.forEach((opt,i)=>{
+    optionsHTML += `<label><input type="radio" name="answer" value="${opt.type}">${opt.text}</label>`;
+  });
+  document.getElementById("options").innerHTML = optionsHTML;
+}
+
+function nextQuestion(){
+  let selected = document.querySelector('input[name="answer"]:checked');
+  if(!selected){
+    alert("Please select an answer");
+    return;
+  }
+
+  if(selected.value=="eng") engScore++;
+  else medScore++;
+
+  current++;
+  if(current < questions.length){
+    loadQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult(){
+  document.getElementById("question").style.display="none";
+  document.getElementById("options").style.display="none";
+  document.getElementById("progress").style.display="none";
+  document.querySelector("button").style.display="none";
+
+  let resultText="";
+  let collegeText="";
+
+  const engColleges = [
+    "IIT Bombay",
+    "IIT Delhi",
+    "BITS Pilani",
+    "VIT Vellore",
+    "NIT Trichy"
+  ];
+
+  const medColleges = [
+    "AIIMS Delhi",
+    "KIMS Hubbali",
+    "AFMC Pune",
+    "Maulana Azad Medical College, Delhi",
+    "Kasturba Medical College, Manipal"
+  ];
+
+  if(engScore > medScore){
+    resultText="🚀 Engineering field suits you the most!";
+    collegeText = "<h3>Top Engineering Colleges:</h3><ul>";
+    engColleges.forEach(c => { collegeText += "<li>" + c + "</li>"; });
+    collegeText += "</ul>";
+  } else {
+    resultText="🩺 Medical field suits you the most!";
+    collegeText = "<h3>Top Medical Colleges:</h3><ul>";
+    medColleges.forEach(c => { collegeText += "<li>" + c + "</li>"; });
+    collegeText += "</ul>";
+  }
+
+  document.getElementById("result").innerHTML = resultText + collegeText;
+
+  // Save quiz result to backend
+  let userEmail = localStorage.getItem("email") || "guest@example.com";
+  let totalCorrect = Math.max(engScore, medScore);
+
+  fetch("http://localhost:5000/quiz",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({email:userEmail, correctAnswers:totalCorrect})
+  })
+  .then(res=>res.json())
+  .then(data=>console.log(data.message))
+  .catch(err=>console.error("Error saving score:",err));
+}
+
+loadQuestion();
+</script>
+</body>
+</html>
